@@ -22,7 +22,6 @@ class PlayerDropdownUI:
         combobox["values"] = [player["name"] for player in self.manager.available_players]
         combobox.set("Select a player")
         combobox.pack(fill="both", expand=True)
-        print(f"Dropdown coords {self.abs_x} & {self.abs_y}")
         combobox.bind("<<ComboboxSelected>>", lambda event: self.on_option_select(selected_option.get(), x, y, dropdown_window))
 
     def on_option_select(self, player_name, x, y, window):
@@ -32,9 +31,8 @@ class PlayerDropdownUI:
                                               callback=lambda role: self.update_player_widget_with_role(player, role, x, y, window))
 
     def update_player_widget_with_role(self, player, role, x, y, window):
-        print(self.manager.save_states)
         for loaded_player in self.manager.save_states:
-            if loaded_player["y"] == y:
+            if loaded_player["y"] == y and loaded_player["x"] == x+10:
                 y += 22
         self.player = PlayerWidget(self.canvas, self.manager).update_info(player, x+10, y, role)
         player["role"] = role

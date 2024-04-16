@@ -22,11 +22,11 @@ class UI:
     def setup_positions(self):
         player_positions= {
             "gk": (1,600, "gk"),
-            "def": (3, 500, "def"),
-            "dm": (4, 400, "dm"),
-            "cm": (0, 300, "cm"),
-            "am": (2, 200, "am"),
-            "st": (1, 100, "st"),
+            "def": (4, 500, "def"),
+            "dm": (0, 400, "dm"),
+            "cm": (4, 300, "cm"),
+            "am": (0, 200, "am"),
+            "st": (2, 100, "st"),
         }
         for pos_id, (num_players, y, pos_key) in player_positions.items():
             self.formation.load_positions(num_players, y, pos_key)
